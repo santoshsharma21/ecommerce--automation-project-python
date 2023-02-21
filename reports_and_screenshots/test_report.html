@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>Ecommerce Test Report</title>
+    <link href="assets/style.css" rel="stylesheet" type="text/css"/></head>
+  <body onLoad="init()">
+    <script>/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this file,
+ * You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+
+function toArray(iter) {
+    if (iter === null) {
+        return null;
+    }
+    return Array.prototype.slice.call(iter);
+}
+
+function find(selector, elem) { // eslint-disable-line no-redeclare
+    if (!elem) {
+        elem = document;
+    }
+    return elem.querySelector(selector);
+}
+
+function findAll(selector, elem) {
+    if (!elem) {
+        elem = document;
+    }
+    return toArray(elem.querySelectorAll(selector));
+}
+
+function sortColumn(elem) {
+    toggleSortStates(elem);
+    const colIndex = toArray(elem.parentNode.childNodes).indexOf(elem);
+    let key;
+    if (elem.classList.contains('result')) {
+        key = keyResult;
+    } else if (elem.classList.contains('links')) {
+        key = keyLink;
+    } else {
+        key = keyAlpha;
+    }
+    sortTable(elem, key(colIndex));
+}
+
+function showAllExtras() { // eslint-disable-line no-unused-vars
+    findAll('.col-result').forEach(showExtras);
+}
+
+function hideAllExtras() { // eslint-disable-line no-unused-vars
+    findAll('.col-result').forEach(hideExtras);
+}
+
+function showExtras(colresultElem) {
+    const extras = colresultElem.parentNode.nextElementSibling;
+    const expandcollapse = colresultElem.firstElementChild;
+    extras.classList.remove('collapsed');
+    expandcollapse.classList.remove('expander');
+    expandcollapse.classList.add('collapser');
+}
+
+function hideExtras(colresultElem) {
+    const extras = colresultElem.parentNode.nextElementSibling;
+    const expandcollapse = colresultElem.firstElementChild;
+    extras.classList.add('collapsed');
+    expandcollapse.classList.remove('collapser');
+    expandcollapse.classList.add('expander');
+}
+
+function showFilters() {
+    let visibleString = getQueryParameter('visible') || 'all';
+    visibleString = visibleString.toLowerCase();
+    const checkedItems = visibleString.split(',');
+
+    const filterItems = document.getElementsByClassName('filter');
+    for (let i = 0; i < filterItems.length; i++) {
+        filterItems[i].hidden = false;
+
+        if (visibleString != 'all') {
+            filterItems[i].checked = checkedItems.includes(filterItems[i].getAttribute('data-test-result'));
+            filterTable(filterItems[i]);
+        }
+    }
+}
+
+function addCollapse() {
+    // Add links for show/hide all
+    const resulttable = find('table#results-table');
+    const showhideall = document.createElement('p');
+    showhideall.innerHTML = '<a href="javascript:showAllExtras()">Show all details</a> / ' +
+                            '<a href="javascript:hideAllExtras()">Hide all details</a>';
+    resulttable.parentElement.insertBefore(showhideall, resulttable);
+
+    // Add show/hide link to each result
+    findAll('.col-result').forEach(function(elem) {
+        const collapsed = getQueryParameter('collapsed') || 'Passed';
+        const extras = elem.parentNode.nextElementSibling;
+        const expandcollapse = document.createElement('span');
+        if (extras.classList.contains('collapsed')) {
+            expandcollapse.classList.add('expander');
+        } else if (collapsed.includes(elem.innerHTML)) {
+            extras.classList.add('collapsed');
+            expandcollapse.classList.add('expander');
+        } else {
+            expandcollapse.classList.add('collapser');
+        }
+        elem.appendChild(expandcollapse);
+
+        elem.addEventListener('click', function(event) {
+            if (event.currentTarget.parentNode.nextElementSibling.classList.contains('collapsed')) {
+                showExtras(event.currentTarget);
+            } else {
+                hideExtras(event.currentTarget);
+            }
+        });
+    });
+}
+
+function getQueryParameter(name) {
+    const match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
+    return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+}
+
+function init () { // eslint-disable-line no-unused-vars
+    resetSortHeaders();
+
+    addCollapse();
+
+    showFilters();
+
+    sortColumn(find('.initial-sort'));
+
+    findAll('.sortable').forEach(function(elem) {
+        elem.addEventListener('click',
+            function() {
+                sortColumn(elem);
+            }, false);
+    });
+}
+
+function sortTable(clicked, keyFunc) {
+    const rows = findAll('.results-table-row');
+    const reversed = !clicked.classList.contains('asc');
+    const sortedRows = sort(rows, keyFunc, reversed);
+    /* Whole table is removed here because browsers acts much slower
+     * when appending existing elements.
+     */
+    const thead = document.getElementById('results-table-head');
+    document.getElementById('results-table').remove();
+    const parent = document.createElement('table');
+    parent.id = 'results-table';
+    parent.appendChild(thead);
+    sortedRows.forEach(function(elem) {
+        parent.appendChild(elem);
+    });
+    document.getElementsByTagName('BODY')[0].appendChild(parent);
+}
+
+function sort(items, keyFunc, reversed) {
+    const sortArray = items.map(function(item, i) {
+        return [keyFunc(item), i];
+    });
+
+    sortArray.sort(function(a, b) {
+        const keyA = a[0];
+        const keyB = b[0];
+
+        if (keyA == keyB) return 0;
+
+        if (reversed) {
+            return keyA < keyB ? 1 : -1;
+        } else {
+            return keyA > keyB ? 1 : -1;
+        }
+    });
+
+    return sortArray.map(function(item) {
+        const index = item[1];
+        return items[index];
+    });
+}
+
+function keyAlpha(colIndex) {
+    return function(elem) {
+        return elem.childNodes[1].childNodes[colIndex].firstChild.data.toLowerCase();
+    };
+}
+
+function keyLink(colIndex) {
+    return function(elem) {
+        const dataCell = elem.childNodes[1].childNodes[colIndex].firstChild;
+        return dataCell == null ? '' : dataCell.innerText.toLowerCase();
+    };
+}
+
+function keyResult(colIndex) {
+    return function(elem) {
+        const strings = ['Error', 'Failed', 'Rerun', 'XFailed', 'XPassed',
+            'Skipped', 'Passed'];
+        return strings.indexOf(elem.childNodes[1].childNodes[colIndex].firstChild.data);
+    };
+}
+
+function resetSortHeaders() {
+    findAll('.sort-icon').forEach(function(elem) {
+        elem.parentNode.removeChild(elem);
+    });
+    findAll('.sortable').forEach(function(elem) {
+        const icon = document.createElement('div');
+        icon.className = 'sort-icon';
+        icon.textContent = 'vvv';
+        elem.insertBefore(icon, elem.firstChild);
+        elem.classList.remove('desc', 'active');
+        elem.classList.add('asc', 'inactive');
+    });
+}
+
+function toggleSortStates(elem) {
+    //if active, toggle between asc and desc
+    if (elem.classList.contains('active')) {
+        elem.classList.toggle('asc');
+        elem.classList.toggle('desc');
+    }
+
+    //if inactive, reset all other functions and add ascending active
+    if (elem.classList.contains('inactive')) {
+        resetSortHeaders();
+        elem.classList.remove('inactive');
+        elem.classList.add('active');
+    }
+}
+
+function isAllRowsHidden(value) {
+    return value.hidden == false;
+}
+
+function filterTable(elem) { // eslint-disable-line no-unused-vars
+    const outcomeAtt = 'data-test-result';
+    const outcome = elem.getAttribute(outcomeAtt);
+    const classOutcome = outcome + ' results-table-row';
+    const outcomeRows = document.getElementsByClassName(classOutcome);
+
+    for(let i = 0; i < outcomeRows.length; i++){
+        outcomeRows[i].hidden = !elem.checked;
+    }
+
+    const rows = findAll('.results-table-row').filter(isAllRowsHidden);
+    const allRowsHidden = rows.length == 0 ? true : false;
+    const notFoundMessage = document.getElementById('not-found-message');
+    notFoundMessage.hidden = !allRowsHidden;
+}
+</script>
+    <h1>Ecommerce Test Report</h1>
+    <p>Report generated on 21-Feb-2023 at 23:11:10 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v3.2.0</p>
+    <h2>Environment</h2>
+    <table id="environment">
+      <tr>
+        <td>Platform</td>
+        <td>Windows-10-10.0.19045-SP0</td></tr>
+      <tr>
+        <td>Python</td>
+        <td>3.9.7</td></tr>
+      <tr>
+        <td>Tester</td>
+        <td>Santosh Sharma</td></tr></table>
+    <h2>Summary</h2>
+    <p>12 tests ran in 487.25 seconds. </p>
+    <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="passed">11 passed</span>, <input checked="true" class="filter" data-test-result="skipped" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="skipped">0 skipped</span>, <input checked="true" class="filter" data-test-result="failed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="failed">0 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xfailed">1 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>
+    <h2>Results</h2>
+    <table id="results-table">
+      <thead id="results-table-head">
+        <tr>
+          <th class="sortable result initial-sort" col="result">Result</th>
+          <th class="sortable" col="name">Test</th>
+          <th class="sortable" col="duration">Duration</th>
+          <th class="sortable links" col="links">Links</th></tr>
+        <tr hidden="true" id="not-found-message">
+          <th colspan="4">No results found. Try to check the filters</th></tr></thead>
+      <tbody class="xfailed results-table-row">
+        <tr>
+          <td class="col-result">XFailed</td>
+          <td class="col-name">test_home_page.py::TestHomePage::test_validate_search_box[chrome]</td>
+          <td class="col-duration">18.25</td>
+          <td class="col-links"><a class="url" href="https://magento.softwaretestingboard.com/" target="_blank">URL</a> <a class="url" href="https://magento.softwaretestingboard.com/" target="_blank">URL</a> </td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div><div><img src="test_home_page.py_TestHomePage_test_validate_search_box[chrome]_21.02.2023_23.09.21.png" alt="screenshot" style="width:304px;height:228px;" onclick="window.open(this.src)" align="right"/></div></div>
+            <div class="log">self = &lt;tests.test_home_page.TestHomePage object at 0x00000275708A8A60&gt;<br/><br/>    @pytest.mark.xfail(reason=&quot;deliberate fail&quot;)<br/>    def test_validate_search_box(self):<br/>        self.log.info(&quot;========== test_validate_search_box START ==========&quot;)<br/>        home_pg = HomePage(self.driver)<br/>        status = home_pg.is_search_box_visible()<br/>        self.log.info(&quot;verifying search box visibility&quot;)<br/>    <br/>        # make test failed<br/>        if status:<br/>            self.log.info(&quot;Test Failed&quot;)<br/>&gt;           assert False<br/><span class="error">E           assert False</span><br/><br/>test_home_page.py:40: AssertionError<br/> -------------------------------Captured log call-------------------------------- <br/>INFO     TestHomePage:test_home_page.py:32 ========== test_validate_search_box START ==========
+INFO     TestHomePage:test_home_page.py:35 verifying search box visibility
+INFO     TestHomePage:test_home_page.py:39 Test Failed<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test_create_customer_account_page.py::TestCustomerAccountPage::test_create_customer_account[chrome-generate_data_for_new_account]</td>
+          <td class="col-duration">34.15</td>
+          <td class="col-links"><a class="url" href="https://magento.softwaretestingboard.com/" target="_blank">URL</a> <a class="url" href="https://magento.softwaretestingboard.com/" target="_blank">URL</a> </td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>Actual text = Thank you for registering with Fake Online Clothing Store., Expected text = Thank you for registering
+<br/> -------------------------------Captured log call-------------------------------- <br/>INFO     TestCustomerAccountPage:test_create_customer_account_page.py:23 ========== test_create_customer_account START ==========
+INFO     TestCustomerAccountPage:test_create_customer_account_page.py:26 clicked on create account
+INFO     TestCustomerAccountPage:test_create_customer_account_page.py:31 entered first name, last name, email, password
+INFO     TestCustomerAccountPage:test_create_customer_account_page.py:33 clicked on create account button
+INFO     TestCustomerAccountPage:test_create_customer_account_page.py:42 Test Passed
+INFO     TestCustomerAccountPage:test_create_customer_account_page.py:47 ========== test_create_customer_account END ==========<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test_account_information_page.py::TestAccountInformationPage::test_change_emailid[chrome-get_login_data-generate_data_for_update_account]</td>
+          <td class="col-duration">45.33</td>
+          <td class="col-links"><a class="url" href="https://magento.softwaretestingboard.com/" target="_blank">URL</a> <a class="url" href="https://magento.softwaretestingboard.com/" target="_blank">URL</a> </td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>Actual text = You saved the account information., Expected text = You saved the account information
+<br/> -------------------------------Captured log call-------------------------------- <br/>INFO     TestAccountInformationPage:test_account_information_page.py:22 ========== test_change_email_id START ==========
+INFO     TestAccountInformationPage:test_account_information_page.py:25 clicked signin
+INFO     TestAccountInformationPage:test_account_information_page.py:27 entered email and password
+INFO     TestAccountInformationPage:test_account_information_page.py:29 clicked on signin button
+INFO     TestAccountInformationPage:test_account_information_page.py:31 selected my account
+INFO     TestAccountInformationPage:test_account_information_page.py:35 entered new emailid
+INFO     TestAccountInformationPage:test_account_information_page.py:37 clicked on save button
+INFO     TestAccountInformationPage:test_account_information_page.py:46 Test Passed
+INFO     TestAccountInformationPage:test_account_information_page.py:51 ========== test_change_email_id END ==========<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test_account_information_page.py::TestAccountInformationPage::test_change_password[chrome-get_login_data-get_new_login_data]</td>
+          <td class="col-duration">57.29</td>
+          <td class="col-links"><a class="url" href="https://magento.softwaretestingboard.com/" target="_blank">URL</a> <a class="url" href="https://magento.softwaretestingboard.com/" target="_blank">URL</a> </td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>Actual text = You saved the account information., Expected text = You saved the account information
+<br/> -------------------------------Captured log call-------------------------------- <br/>INFO     TestAccountInformationPage:test_account_information_page.py:59 ========== test_change_password START ==========
+INFO     TestAccountInformationPage:test_account_information_page.py:62 clicked signin
+INFO     TestAccountInformationPage:test_account_information_page.py:64 entered email and password
+INFO     TestAccountInformationPage:test_account_information_page.py:66 clicked on signin button
+INFO     TestAccountInformationPage:test_account_information_page.py:68 selected my account
+INFO     TestAccountInformationPage:test_account_information_page.py:72 entered new password
+INFO     TestAccountInformationPage:test_account_information_page.py:74 clicked on save button
+INFO     TestAccountInformationPage:test_account_information_page.py:83 Test Passed
+INFO     TestAccountInformationPage:test_account_information_page.py:88 ========== test_change_password END ==========<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test_address_book_page.py::TestAddressBookPage::test_add_address[chrome-get_new_login_data-get_address_data]</td>
+          <td class="col-duration">51.03</td>
+          <td class="col-links"><a class="url" href="https://magento.softwaretestingboard.com/" target="_blank">URL</a> <a class="url" href="https://magento.softwaretestingboard.com/" target="_blank">URL</a> </td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>Actual text = You saved the address., Expected text = You saved the address.
+<br/> -------------------------------Captured log call-------------------------------- <br/>INFO     TestAddressBookPage:test_address_book_page.py:23 ========== test_add_address START ==========
+INFO     TestAddressBookPage:test_address_book_page.py:29 login successful
+INFO     TestAddressBookPage:test_address_book_page.py:31 selected my account
+INFO     TestAddressBookPage:test_address_book_page.py:33 clicked on address book
+INFO     TestAddressBookPage:test_address_book_page.py:36 entered details to add address
+INFO     TestAddressBookPage:test_address_book_page.py:45 Test Passed
+INFO     TestAddressBookPage:test_address_book_page.py:50 ========== test_add_address END ==========<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test_cart_page.py::TestCartPage::test_verify_order_total[chrome-get_new_login_data-get_product_data]</td>
+          <td class="col-duration">71.05</td>
+          <td class="col-links"><a class="url" href="https://magento.softwaretestingboard.com/" target="_blank">URL</a> <a class="url" href="https://magento.softwaretestingboard.com/" target="_blank">URL</a> </td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>unit_price = 64.0, ship_charge = 5.0, order_price = 69.0
+Actual amt = 69.0, Expected amt = 69.0
+<br/> -------------------------------Captured log call-------------------------------- <br/>INFO     TestCartPage:test_cart_page.py:23 ========== test_verify_order_total START ==========
+INFO     TestCartPage:test_cart_page.py:26 clicked on sign in
+INFO     TestCartPage:test_cart_page.py:28 entered email and password
+INFO     TestCartPage:test_cart_page.py:30 login successful
+INFO     TestCartPage:test_cart_page.py:32 entered product name to search
+INFO     TestCartPage:test_cart_page.py:34 clicked on product
+INFO     TestCartPage:test_cart_page.py:36 enterd size, color and quantity
+INFO     TestCartPage:test_cart_page.py:38 clicked on shopping cart link
+INFO     TestCartPage:test_cart_page.py:53 Test Passed
+INFO     TestCartPage:test_cart_page.py:58 ========== test_verify_order_total END ==========<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test_customer_login_page.py::TestCustomerLoginPage::test_login[chrome-get_new_login_data]</td>
+          <td class="col-duration">22.06</td>
+          <td class="col-links"><a class="url" href="https://magento.softwaretestingboard.com/" target="_blank">URL</a> <a class="url" href="https://magento.softwaretestingboard.com/" target="_blank">URL</a> </td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>Actual text = Welcome, sony kumar!, Expected text = Welcome, sony kumar!
+<br/> -------------------------------Captured log call-------------------------------- <br/>INFO     TestCustomerLoginPage:test_customer_login_page.py:19 ========== test_login START ==========
+INFO     TestCustomerLoginPage:test_customer_login_page.py:22 clicked on signin
+INFO     TestCustomerLoginPage:test_customer_login_page.py:24 entered email and password
+INFO     TestCustomerLoginPage:test_customer_login_page.py:26 clicked login button
+INFO     TestCustomerLoginPage:test_customer_login_page.py:34 login successful
+INFO     TestCustomerLoginPage:test_customer_login_page.py:35 Test Passed
+INFO     TestCustomerLoginPage:test_customer_login_page.py:41 ========== test_login END ==========<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test_end_to_end.py::TestEndToEnd::test_end_to_end[chrome-get_new_login_data-get_product_data]</td>
+          <td class="col-duration">68.76</td>
+          <td class="col-links"><a class="url" href="https://magento.softwaretestingboard.com/" target="_blank">URL</a> <a class="url" href="https://magento.softwaretestingboard.com/" target="_blank">URL</a> </td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>Actual text = Thank you for your purchase!, Expected text = Thank you for your purchase!
+<br/> -------------------------------Captured log call-------------------------------- <br/>INFO     TestEndToEnd:test_end_to_end.py:22 ========== test_end_to_end START ==========
+INFO     TestEndToEnd:test_end_to_end.py:26 entered email and password
+INFO     TestEndToEnd:test_end_to_end.py:28 login successful
+INFO     TestEndToEnd:test_end_to_end.py:30 entered product name
+INFO     TestEndToEnd:test_end_to_end.py:32 clicked on product
+INFO     TestEndToEnd:test_end_to_end.py:34 product added to cart
+INFO     TestEndToEnd:test_end_to_end.py:37 clicked on proceed to checkout button
+INFO     TestEndToEnd:test_end_to_end.py:42 clicked on place order button
+INFO     TestEndToEnd:test_end_to_end.py:50 Test Passed
+INFO     TestEndToEnd:test_end_to_end.py:55 ========== test_end_to_end END ==========<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test_home_page.py::TestHomePage::test_home_page_title[chrome]</td>
+          <td class="col-duration">12.53</td>
+          <td class="col-links"><a class="url" href="https://magento.softwaretestingboard.com/" target="_blank">URL</a> <a class="url" href="https://magento.softwaretestingboard.com/" target="_blank">URL</a> </td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> -------------------------------Captured log call-------------------------------- <br/>INFO     TestHomePage:test_home_page.py:15 ========== test_home_page_title START ==========
+INFO     TestHomePage:test_home_page.py:19 verifying home page title
+INFO     TestHomePage:test_home_page.py:23 Test Passed
+INFO     TestHomePage:test_home_page.py:28 ========== test_home_page_title END ==========<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test_product_details_page.py::TestProductDetailsPage::test_add_to_cart[chrome-get_new_login_data-get_product_data]</td>
+          <td class="col-duration">33.91</td>
+          <td class="col-links"><a class="url" href="https://magento.softwaretestingboard.com/" target="_blank">URL</a> <a class="url" href="https://magento.softwaretestingboard.com/" target="_blank">URL</a> </td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>Actual text = You added Grayson Crewneck Sweatshirt to your shopping cart., Expected text = You added Grayson Crewneck Sweatshirt to your shopping cart.
+<br/> -------------------------------Captured log call-------------------------------- <br/>INFO     TestProductDetailsPage:test_product_details_page.py:22 ***** test_add_to_cart test START *****
+INFO     TestProductDetailsPage:test_product_details_page.py:25 clicked on signin
+INFO     TestProductDetailsPage:test_product_details_page.py:27 entered email and password
+INFO     TestProductDetailsPage:test_product_details_page.py:29 login successful
+INFO     TestProductDetailsPage:test_product_details_page.py:31 entered product name to search
+INFO     TestProductDetailsPage:test_product_details_page.py:33 clicked on product
+INFO     TestProductDetailsPage:test_product_details_page.py:35 enterd size, color and quantity
+INFO     TestProductDetailsPage:test_product_details_page.py:44 Test Passed
+INFO     TestProductDetailsPage:test_product_details_page.py:49 ***** test_add_to_cart test END *****<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test_product_details_page.py::TestProductDetailsPage::test_add_to_wishlist[chrome-get_new_login_data]</td>
+          <td class="col-duration">46.21</td>
+          <td class="col-links"><a class="url" href="https://magento.softwaretestingboard.com/" target="_blank">URL</a> <a class="url" href="https://magento.softwaretestingboard.com/" target="_blank">URL</a> </td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> -------------------------------Captured log call-------------------------------- <br/>INFO     TestProductDetailsPage:test_product_details_page.py:57 ========== test_add_to_wish_list START ==========
+INFO     TestProductDetailsPage:test_product_details_page.py:60 clicked on signin
+INFO     TestProductDetailsPage:test_product_details_page.py:62 entered email and password
+INFO     TestProductDetailsPage:test_product_details_page.py:64 login successful
+INFO     TestProductDetailsPage:test_product_details_page.py:66 entered product name to search
+INFO     TestProductDetailsPage:test_product_details_page.py:68 clicked on product
+INFO     TestProductDetailsPage:test_product_details_page.py:77 Test Passed
+INFO     TestProductDetailsPage:test_product_details_page.py:82 ========== test_add_to_wish_list END ==========<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test_search_result_page.py::TestSearchResultPage::test_product_availability[chrome-get_new_login_data]</td>
+          <td class="col-duration">23.68</td>
+          <td class="col-links"><a class="url" href="https://magento.softwaretestingboard.com/" target="_blank">URL</a> <a class="url" href="https://magento.softwaretestingboard.com/" target="_blank">URL</a> </td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> -------------------------------Captured log call-------------------------------- <br/>INFO     TestSearchResultPage:test_search_result_page.py:20 ========== test_product_availability START ==========
+INFO     TestSearchResultPage:test_search_result_page.py:23 clicked on signin
+INFO     TestSearchResultPage:test_search_result_page.py:25 entered email and password
+INFO     TestSearchResultPage:test_search_result_page.py:27 login successful
+INFO     TestSearchResultPage:test_search_result_page.py:29 entered product name to search
+INFO     TestSearchResultPage:test_search_result_page.py:31 verifying product availability
+INFO     TestSearchResultPage:test_search_result_page.py:35 Test Passed
+INFO     TestSearchResultPage:test_search_result_page.py:40 ========== test_product_availability END ==========<br/></div></td></tr></tbody></table></body></html>
