@@ -88,3 +88,10 @@
 21-Feb-2023 23:11:07: INFO: TestSearchResultPage: test_product_availability(): verifying product availability:
 21-Feb-2023 23:11:07: INFO: TestSearchResultPage: test_product_availability(): Test Passed:
 21-Feb-2023 23:11:07: INFO: TestSearchResultPage: test_product_availability(): ========== test_product_availability END ==========:
+22-Feb-2023 00:18:23: INFO: TestHomePage: test_home_page_title(): ========== test_home_page_title START ==========:
+22-Feb-2023 00:18:23: INFO: TestHomePage: test_home_page_title(): verifying home page title:
+22-Feb-2023 00:18:23: INFO: TestHomePage: test_home_page_title(): Test Passed:
+22-Feb-2023 00:18:23: INFO: TestHomePage: test_home_page_title(): ========== test_home_page_title END ==========:
+22-Feb-2023 00:18:41: INFO: TestHomePage: test_validate_search_box(): ========== test_validate_search_box START ==========:
+22-Feb-2023 00:18:42: INFO: TestHomePage: test_validate_search_box(): verifying search box visibility:
+22-Feb-2023 00:18:42: INFO: TestHomePage: test_validate_search_box(): Test Failed:
