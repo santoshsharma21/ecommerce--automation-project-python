@@ -88,3 +88,212 @@
 22-Feb-2023 22:19:09: INFO: TestSearchResultPage: test_product_availability(): verifying product availability:
 22-Feb-2023 22:19:09: INFO: TestSearchResultPage: test_product_availability(): Test Passed:
 22-Feb-2023 22:19:09: INFO: TestSearchResultPage: test_product_availability(): ========== test_product_availability END ==========:
+22-Feb-2023 23:47:13: INFO: TestCustomerAccountPage: test_create_customer_account(): ========== test_create_customer_account START ==========:
+22-Feb-2023 23:47:19: INFO: TestCustomerAccountPage: test_create_customer_account(): clicked on create account:
+22-Feb-2023 23:47:23: INFO: TestCustomerAccountPage: test_create_customer_account(): entered first name, last name, email, password:
+22-Feb-2023 23:47:28: INFO: TestCustomerAccountPage: test_create_customer_account(): clicked on create account button:
+22-Feb-2023 23:47:38: INFO: TestCustomerAccountPage: test_create_customer_account(): Test Passed:
+22-Feb-2023 23:47:38: INFO: TestCustomerAccountPage: test_create_customer_account(): ========== test_create_customer_account END ==========:
+22-Feb-2023 23:47:56: INFO: TestAccountInformationPage: test_change_emailid(): ========== test_change_email_id START ==========:
+22-Feb-2023 23:48:02: INFO: TestAccountInformationPage: test_change_emailid(): clicked signin:
+22-Feb-2023 23:48:04: INFO: TestAccountInformationPage: test_change_emailid(): entered email and password:
+22-Feb-2023 23:48:09: INFO: TestAccountInformationPage: test_change_emailid(): clicked on signin button:
+22-Feb-2023 23:48:13: INFO: TestAccountInformationPage: test_change_emailid(): selected my account:
+22-Feb-2023 23:48:18: INFO: TestAccountInformationPage: test_change_emailid(): entered new emailid:
+22-Feb-2023 23:48:23: INFO: TestAccountInformationPage: test_change_emailid(): clicked on save button:
+22-Feb-2023 23:48:33: INFO: TestAccountInformationPage: test_change_emailid(): Test Passed:
+22-Feb-2023 23:48:33: INFO: TestAccountInformationPage: test_change_emailid(): ========== test_change_email_id END ==========:
+22-Feb-2023 23:48:55: INFO: TestAccountInformationPage: test_change_password(): ========== test_change_password START ==========:
+22-Feb-2023 23:49:00: INFO: TestAccountInformationPage: test_change_password(): clicked signin:
+22-Feb-2023 23:49:05: INFO: TestAccountInformationPage: test_change_password(): entered email and password:
+22-Feb-2023 23:49:11: INFO: TestAccountInformationPage: test_change_password(): clicked on signin button:
+22-Feb-2023 23:49:17: INFO: TestAccountInformationPage: test_change_password(): selected my account:
+22-Feb-2023 23:49:26: INFO: TestAccountInformationPage: test_change_password(): entered new password:
+22-Feb-2023 23:49:32: INFO: TestAccountInformationPage: test_change_password(): clicked on save button:
+22-Feb-2023 23:49:47: INFO: TestAccountInformationPage: test_change_password(): Test Passed:
+22-Feb-2023 23:49:47: INFO: TestAccountInformationPage: test_change_password(): ========== test_change_password END ==========:
+22-Feb-2023 23:50:04: INFO: TestAddressBookPage: test_add_address(): ========== test_add_address START ==========:
+22-Feb-2023 23:50:17: INFO: TestAddressBookPage: test_add_address(): login successful:
+22-Feb-2023 23:50:21: INFO: TestAddressBookPage: test_add_address(): selected my account:
+22-Feb-2023 23:50:27: INFO: TestAddressBookPage: test_add_address(): clicked on address book:
+22-Feb-2023 23:50:40: INFO: TestAddressBookPage: test_add_address(): entered details to add address:
+22-Feb-2023 23:54:17: INFO: TestCustomerAccountPage: test_create_customer_account(): ========== test_create_customer_account START ==========:
+22-Feb-2023 23:54:23: INFO: TestCustomerAccountPage: test_create_customer_account(): clicked on create account:
+22-Feb-2023 23:54:27: INFO: TestCustomerAccountPage: test_create_customer_account(): entered first name, last name, email, password:
+22-Feb-2023 23:54:33: INFO: TestCustomerAccountPage: test_create_customer_account(): clicked on create account button:
+22-Feb-2023 23:54:43: INFO: TestCustomerAccountPage: test_create_customer_account(): Test Passed:
+22-Feb-2023 23:54:43: INFO: TestCustomerAccountPage: test_create_customer_account(): ========== test_create_customer_account END ==========:
+22-Feb-2023 23:55:00: INFO: TestAccountInformationPage: test_change_emailid(): ========== test_change_email_id START ==========:
+22-Feb-2023 23:55:04: INFO: TestAccountInformationPage: test_change_emailid(): clicked signin:
+22-Feb-2023 23:55:07: INFO: TestAccountInformationPage: test_change_emailid(): entered email and password:
+22-Feb-2023 23:55:10: INFO: TestAccountInformationPage: test_change_emailid(): clicked on signin button:
+22-Feb-2023 23:55:15: INFO: TestAccountInformationPage: test_change_emailid(): selected my account:
+22-Feb-2023 23:55:21: INFO: TestAccountInformationPage: test_change_emailid(): entered new emailid:
+22-Feb-2023 23:55:27: INFO: TestAccountInformationPage: test_change_emailid(): clicked on save button:
+22-Feb-2023 23:55:38: INFO: TestAccountInformationPage: test_change_emailid(): Test Passed:
+22-Feb-2023 23:55:38: INFO: TestAccountInformationPage: test_change_emailid(): ========== test_change_email_id END ==========:
+22-Feb-2023 23:55:57: INFO: TestAccountInformationPage: test_change_password(): ========== test_change_password START ==========:
+22-Feb-2023 23:56:01: INFO: TestAccountInformationPage: test_change_password(): clicked signin:
+22-Feb-2023 23:56:03: INFO: TestAccountInformationPage: test_change_password(): entered email and password:
+22-Feb-2023 23:56:08: INFO: TestAccountInformationPage: test_change_password(): clicked on signin button:
+22-Feb-2023 23:56:18: INFO: TestAccountInformationPage: test_change_password(): selected my account:
+22-Feb-2023 23:56:27: INFO: TestAccountInformationPage: test_change_password(): entered new password:
+22-Feb-2023 23:56:32: INFO: TestAccountInformationPage: test_change_password(): clicked on save button:
+22-Feb-2023 23:56:47: INFO: TestAccountInformationPage: test_change_password(): Test Passed:
+22-Feb-2023 23:56:47: INFO: TestAccountInformationPage: test_change_password(): ========== test_change_password END ==========:
+22-Feb-2023 23:57:04: INFO: TestAddressBookPage: test_add_address(): ========== test_add_address START ==========:
+22-Feb-2023 23:57:15: INFO: TestAddressBookPage: test_add_address(): login successful:
+22-Feb-2023 23:57:21: INFO: TestAddressBookPage: test_add_address(): selected my account:
+22-Feb-2023 23:57:25: INFO: TestAddressBookPage: test_add_address(): clicked on address book:
+22-Feb-2023 23:57:44: INFO: TestAddressBookPage: test_add_address(): entered details to add address:
+22-Feb-2023 23:57:54: INFO: TestAddressBookPage: test_add_address(): Test Passed:
+22-Feb-2023 23:57:54: INFO: TestAddressBookPage: test_add_address(): ========== test_add_address END ==========:
+22-Feb-2023 23:58:15: INFO: TestCartPage: test_verify_order_total(): ========== test_verify_order_total START ==========:
+22-Feb-2023 23:58:21: INFO: TestCartPage: test_verify_order_total(): clicked on sign in:
+22-Feb-2023 23:58:23: INFO: TestCartPage: test_verify_order_total(): entered email and password:
+22-Feb-2023 23:58:28: INFO: TestCartPage: test_verify_order_total(): login successful:
+22-Feb-2023 23:58:36: INFO: TestCartPage: test_verify_order_total(): entered product name to search:
+22-Feb-2023 23:58:41: INFO: TestCartPage: test_verify_order_total(): clicked on product:
+22-Feb-2023 23:58:46: INFO: TestCartPage: test_verify_order_total(): enterd size, color and quantity:
+22-Feb-2023 23:58:53: INFO: TestCartPage: test_verify_order_total(): clicked on shopping cart link:
+22-Feb-2023 23:59:30: INFO: TestCartPage: test_verify_order_total(): Test Passed:
+22-Feb-2023 23:59:30: INFO: TestCartPage: test_verify_order_total(): ========== test_verify_order_total END ==========:
+22-Feb-2023 23:59:47: INFO: TestCustomerLoginPage: test_login(): ========== test_login START ==========:
+22-Feb-2023 23:59:53: INFO: TestCustomerLoginPage: test_login(): clicked on signin:
+22-Feb-2023 23:59:54: INFO: TestCustomerLoginPage: test_login(): entered email and password:
+22-Feb-2023 23:59:58: INFO: TestCustomerLoginPage: test_login(): clicked login button:
+23-Feb-2023 00:00:00: INFO: TestCustomerLoginPage: test_login(): login successful:
+23-Feb-2023 00:00:00: INFO: TestCustomerLoginPage: test_login(): Test Passed:
+23-Feb-2023 00:00:00: INFO: TestCustomerLoginPage: test_login(): ========== test_login END ==========:
+23-Feb-2023 00:00:24: INFO: TestEndToEnd: test_end_to_end(): ========== test_end_to_end START ==========:
+23-Feb-2023 00:00:31: INFO: TestEndToEnd: test_end_to_end(): entered email and password:
+23-Feb-2023 00:00:35: INFO: TestEndToEnd: test_end_to_end(): login successful:
+23-Feb-2023 00:00:42: INFO: TestEndToEnd: test_end_to_end(): entered product name:
+23-Feb-2023 00:00:47: INFO: TestEndToEnd: test_end_to_end(): clicked on product:
+23-Feb-2023 00:00:52: INFO: TestEndToEnd: test_end_to_end(): product added to cart:
+23-Feb-2023 00:01:03: INFO: TestEndToEnd: test_end_to_end(): clicked on proceed to checkout button:
+23-Feb-2023 00:01:25: INFO: TestEndToEnd: test_end_to_end(): clicked on place order button:
+23-Feb-2023 00:01:36: INFO: TestEndToEnd: test_end_to_end(): Test Passed:
+23-Feb-2023 00:01:36: INFO: TestEndToEnd: test_end_to_end(): ========== test_end_to_end END ==========:
+23-Feb-2023 00:01:56: INFO: TestHomePage: test_home_page_title(): ========== test_home_page_title START ==========:
+23-Feb-2023 00:01:56: INFO: TestHomePage: test_home_page_title(): verifying home page title:
+23-Feb-2023 00:01:56: INFO: TestHomePage: test_home_page_title(): Test Passed:
+23-Feb-2023 00:01:56: INFO: TestHomePage: test_home_page_title(): ========== test_home_page_title END ==========:
+23-Feb-2023 00:02:19: INFO: TestHomePage: test_validate_search_box(): ========== test_validate_search_box START ==========:
+23-Feb-2023 00:02:20: INFO: TestHomePage: test_validate_search_box(): verifying search box visibility:
+23-Feb-2023 00:02:20: INFO: TestHomePage: test_validate_search_box(): Test Failed:
+23-Feb-2023 00:02:38: INFO: TestProductDetailsPage: test_add_to_cart(): ***** test_add_to_cart test START *****:
+23-Feb-2023 00:02:42: INFO: TestProductDetailsPage: test_add_to_cart(): clicked on signin:
+23-Feb-2023 00:02:44: INFO: TestProductDetailsPage: test_add_to_cart(): entered email and password:
+23-Feb-2023 00:02:48: INFO: TestProductDetailsPage: test_add_to_cart(): login successful:
+23-Feb-2023 00:02:53: INFO: TestProductDetailsPage: test_add_to_cart(): entered product name to search:
+23-Feb-2023 00:02:57: INFO: TestProductDetailsPage: test_add_to_cart(): clicked on product:
+23-Feb-2023 00:03:02: INFO: TestProductDetailsPage: test_add_to_cart(): enterd size, color and quantity:
+23-Feb-2023 00:03:07: INFO: TestProductDetailsPage: test_add_to_cart(): Test Passed:
+23-Feb-2023 00:03:07: INFO: TestProductDetailsPage: test_add_to_cart(): ***** test_add_to_cart test END *****:
+23-Feb-2023 00:03:29: INFO: TestProductDetailsPage: test_add_to_wishlist(): ========== test_add_to_wish_list START ==========:
+23-Feb-2023 00:03:34: INFO: TestProductDetailsPage: test_add_to_wishlist(): clicked on signin:
+23-Feb-2023 00:03:36: INFO: TestProductDetailsPage: test_add_to_wishlist(): entered email and password:
+23-Feb-2023 00:03:44: INFO: TestProductDetailsPage: test_add_to_wishlist(): login successful:
+23-Feb-2023 00:03:52: INFO: TestProductDetailsPage: test_add_to_wishlist(): entered product name to search:
+23-Feb-2023 00:03:57: INFO: TestProductDetailsPage: test_add_to_wishlist(): clicked on product:
+23-Feb-2023 00:04:10: INFO: TestProductDetailsPage: test_add_to_wishlist(): Test Passed:
+23-Feb-2023 00:04:10: INFO: TestProductDetailsPage: test_add_to_wishlist(): ========== test_add_to_wish_list END ==========:
+23-Feb-2023 00:04:29: INFO: TestSearchResultPage: test_product_availability(): ========== test_product_availability START ==========:
+23-Feb-2023 00:04:35: INFO: TestSearchResultPage: test_product_availability(): clicked on signin:
+23-Feb-2023 00:04:36: INFO: TestSearchResultPage: test_product_availability(): entered email and password:
+23-Feb-2023 00:04:41: INFO: TestSearchResultPage: test_product_availability(): login successful:
+23-Feb-2023 00:04:48: INFO: TestSearchResultPage: test_product_availability(): entered product name to search:
+23-Feb-2023 00:04:48: INFO: TestSearchResultPage: test_product_availability(): verifying product availability:
+23-Feb-2023 00:04:48: INFO: TestSearchResultPage: test_product_availability(): Test Passed:
+23-Feb-2023 00:04:48: INFO: TestSearchResultPage: test_product_availability(): ========== test_product_availability END ==========:
+23-Feb-2023 00:11:42: INFO: TestCustomerAccountPage: test_create_customer_account(): ========== test_create_customer_account START ==========:
+23-Feb-2023 00:11:55: INFO: TestCustomerAccountPage: test_create_customer_account(): clicked on create account:
+23-Feb-2023 00:11:59: INFO: TestCustomerAccountPage: test_create_customer_account(): entered first name, last name, email, password:
+23-Feb-2023 00:12:05: INFO: TestCustomerAccountPage: test_create_customer_account(): clicked on create account button:
+23-Feb-2023 00:12:15: INFO: TestCustomerAccountPage: test_create_customer_account(): Test Passed:
+23-Feb-2023 00:12:15: INFO: TestCustomerAccountPage: test_create_customer_account(): ========== test_create_customer_account END ==========:
+23-Feb-2023 00:12:33: INFO: TestAccountInformationPage: test_change_emailid(): ========== test_change_email_id START ==========:
+23-Feb-2023 00:12:37: INFO: TestAccountInformationPage: test_change_emailid(): clicked signin:
+23-Feb-2023 00:12:39: INFO: TestAccountInformationPage: test_change_emailid(): entered email and password:
+23-Feb-2023 00:12:43: INFO: TestAccountInformationPage: test_change_emailid(): clicked on signin button:
+23-Feb-2023 00:12:47: INFO: TestAccountInformationPage: test_change_emailid(): selected my account:
+23-Feb-2023 00:12:54: INFO: TestAccountInformationPage: test_change_emailid(): entered new emailid:
+23-Feb-2023 00:13:00: INFO: TestAccountInformationPage: test_change_emailid(): clicked on save button:
+23-Feb-2023 00:13:10: INFO: TestAccountInformationPage: test_change_emailid(): Test Passed:
+23-Feb-2023 00:13:10: INFO: TestAccountInformationPage: test_change_emailid(): ========== test_change_email_id END ==========:
+23-Feb-2023 00:13:30: INFO: TestAccountInformationPage: test_change_password(): ========== test_change_password START ==========:
+23-Feb-2023 00:13:34: INFO: TestAccountInformationPage: test_change_password(): clicked signin:
+23-Feb-2023 00:13:37: INFO: TestAccountInformationPage: test_change_password(): entered email and password:
+23-Feb-2023 00:13:40: INFO: TestAccountInformationPage: test_change_password(): clicked on signin button:
+23-Feb-2023 00:13:46: INFO: TestAccountInformationPage: test_change_password(): selected my account:
+23-Feb-2023 00:13:58: INFO: TestAccountInformationPage: test_change_password(): entered new password:
+23-Feb-2023 00:14:05: INFO: TestAccountInformationPage: test_change_password(): clicked on save button:
+23-Feb-2023 00:14:21: INFO: TestAccountInformationPage: test_change_password(): Test Passed:
+23-Feb-2023 00:14:21: INFO: TestAccountInformationPage: test_change_password(): ========== test_change_password END ==========:
+23-Feb-2023 00:14:39: INFO: TestAddressBookPage: test_add_address(): ========== test_add_address START ==========:
+23-Feb-2023 00:14:49: INFO: TestAddressBookPage: test_add_address(): login successful:
+23-Feb-2023 00:14:54: INFO: TestAddressBookPage: test_add_address(): selected my account:
+23-Feb-2023 00:14:58: INFO: TestAddressBookPage: test_add_address(): clicked on address book:
+23-Feb-2023 00:15:17: INFO: TestAddressBookPage: test_add_address(): entered details to add address:
+23-Feb-2023 00:15:28: INFO: TestAddressBookPage: test_add_address(): Test Passed:
+23-Feb-2023 00:15:28: INFO: TestAddressBookPage: test_add_address(): ========== test_add_address END ==========:
+23-Feb-2023 00:15:49: INFO: TestCartPage: test_verify_order_total(): ========== test_verify_order_total START ==========:
+23-Feb-2023 00:15:53: INFO: TestCartPage: test_verify_order_total(): clicked on sign in:
+23-Feb-2023 00:15:55: INFO: TestCartPage: test_verify_order_total(): entered email and password:
+23-Feb-2023 00:15:59: INFO: TestCartPage: test_verify_order_total(): login successful:
+23-Feb-2023 00:16:06: INFO: TestCartPage: test_verify_order_total(): entered product name to search:
+23-Feb-2023 00:16:10: INFO: TestCartPage: test_verify_order_total(): clicked on product:
+23-Feb-2023 00:16:14: INFO: TestCartPage: test_verify_order_total(): enterd size, color and quantity:
+23-Feb-2023 00:16:20: INFO: TestCartPage: test_verify_order_total(): clicked on shopping cart link:
+23-Feb-2023 00:16:57: INFO: TestCartPage: test_verify_order_total(): Test Passed:
+23-Feb-2023 00:16:57: INFO: TestCartPage: test_verify_order_total(): ========== test_verify_order_total END ==========:
+23-Feb-2023 00:17:13: INFO: TestCustomerLoginPage: test_login(): ========== test_login START ==========:
+23-Feb-2023 00:17:18: INFO: TestCustomerLoginPage: test_login(): clicked on signin:
+23-Feb-2023 00:17:20: INFO: TestCustomerLoginPage: test_login(): entered email and password:
+23-Feb-2023 00:17:24: INFO: TestCustomerLoginPage: test_login(): clicked login button:
+23-Feb-2023 00:17:26: INFO: TestCustomerLoginPage: test_login(): login successful:
+23-Feb-2023 00:17:26: INFO: TestCustomerLoginPage: test_login(): Test Passed:
+23-Feb-2023 00:17:26: INFO: TestCustomerLoginPage: test_login(): ========== test_login END ==========:
+23-Feb-2023 00:17:47: INFO: TestEndToEnd: test_end_to_end(): ========== test_end_to_end START ==========:
+23-Feb-2023 00:17:54: INFO: TestEndToEnd: test_end_to_end(): entered email and password:
+23-Feb-2023 00:17:57: INFO: TestEndToEnd: test_end_to_end(): login successful:
+23-Feb-2023 00:18:02: INFO: TestEndToEnd: test_end_to_end(): entered product name:
+23-Feb-2023 00:18:07: INFO: TestEndToEnd: test_end_to_end(): clicked on product:
+23-Feb-2023 00:18:12: INFO: TestEndToEnd: test_end_to_end(): product added to cart:
+23-Feb-2023 00:18:25: INFO: TestEndToEnd: test_end_to_end(): clicked on proceed to checkout button:
+23-Feb-2023 00:18:46: INFO: TestEndToEnd: test_end_to_end(): clicked on place order button:
+23-Feb-2023 00:18:56: INFO: TestEndToEnd: test_end_to_end(): Test Passed:
+23-Feb-2023 00:18:56: INFO: TestEndToEnd: test_end_to_end(): ========== test_end_to_end END ==========:
+23-Feb-2023 00:19:13: INFO: TestHomePage: test_home_page_title(): ========== test_home_page_title START ==========:
+23-Feb-2023 00:19:13: INFO: TestHomePage: test_home_page_title(): verifying home page title:
+23-Feb-2023 00:19:14: INFO: TestHomePage: test_home_page_title(): Test Passed:
+23-Feb-2023 00:19:14: INFO: TestHomePage: test_home_page_title(): ========== test_home_page_title END ==========:
+23-Feb-2023 00:19:37: INFO: TestHomePage: test_validate_search_box(): ========== test_validate_search_box START ==========:
+23-Feb-2023 00:19:37: INFO: TestHomePage: test_validate_search_box(): verifying search box visibility:
+23-Feb-2023 00:19:37: INFO: TestHomePage: test_validate_search_box(): Test Failed:
+23-Feb-2023 00:19:55: INFO: TestProductDetailsPage: test_add_to_cart(): ***** test_add_to_cart test START *****:
+23-Feb-2023 00:20:01: INFO: TestProductDetailsPage: test_add_to_cart(): clicked on signin:
+23-Feb-2023 00:20:03: INFO: TestProductDetailsPage: test_add_to_cart(): entered email and password:
+23-Feb-2023 00:20:07: INFO: TestProductDetailsPage: test_add_to_cart(): login successful:
+23-Feb-2023 00:20:13: INFO: TestProductDetailsPage: test_add_to_cart(): entered product name to search:
+23-Feb-2023 00:20:18: INFO: TestProductDetailsPage: test_add_to_cart(): clicked on product:
+23-Feb-2023 00:20:23: INFO: TestProductDetailsPage: test_add_to_cart(): enterd size, color and quantity:
+23-Feb-2023 00:20:28: INFO: TestProductDetailsPage: test_add_to_cart(): Test Passed:
+23-Feb-2023 00:20:28: INFO: TestProductDetailsPage: test_add_to_cart(): ***** test_add_to_cart test END *****:
+23-Feb-2023 00:20:51: INFO: TestProductDetailsPage: test_add_to_wishlist(): ========== test_add_to_wish_list START ==========:
+23-Feb-2023 00:20:56: INFO: TestProductDetailsPage: test_add_to_wishlist(): clicked on signin:
+23-Feb-2023 00:20:58: INFO: TestProductDetailsPage: test_add_to_wishlist(): entered email and password:
+23-Feb-2023 00:21:04: INFO: TestProductDetailsPage: test_add_to_wishlist(): login successful:
+23-Feb-2023 00:21:14: INFO: TestProductDetailsPage: test_add_to_wishlist(): entered product name to search:
+23-Feb-2023 00:21:19: INFO: TestProductDetailsPage: test_add_to_wishlist(): clicked on product:
+23-Feb-2023 00:21:31: INFO: TestProductDetailsPage: test_add_to_wishlist(): Test Passed:
+23-Feb-2023 00:21:31: INFO: TestProductDetailsPage: test_add_to_wishlist(): ========== test_add_to_wish_list END ==========:
+23-Feb-2023 00:21:52: INFO: TestSearchResultPage: test_product_availability(): ========== test_product_availability START ==========:
+23-Feb-2023 00:21:58: INFO: TestSearchResultPage: test_product_availability(): clicked on signin:
+23-Feb-2023 00:22:00: INFO: TestSearchResultPage: test_product_availability(): entered email and password:
+23-Feb-2023 00:22:04: INFO: TestSearchResultPage: test_product_availability(): login successful:
+23-Feb-2023 00:22:11: INFO: TestSearchResultPage: test_product_availability(): entered product name to search:
+23-Feb-2023 00:22:11: INFO: TestSearchResultPage: test_product_availability(): verifying product availability:
+23-Feb-2023 00:22:11: INFO: TestSearchResultPage: test_product_availability(): Test Passed:
+23-Feb-2023 00:22:11: INFO: TestSearchResultPage: test_product_availability(): ========== test_product_availability END ==========:
