@@ -64,7 +64,7 @@ def generate_data_for_update_account():
     df["new_password"] = new_password
     # df.to_csv("../testdata/file_update_account_details.csv")
     #df.to_csv("http://localhost:8080/job/ecommerce-project/ws/testdata/file_update_account_details.csv", index=False)
-    df.to__csv("../ecommerce-project/testdata/file_update_account_details.csv")
+    df.to_csv("../ecommerce-project/testdata/file_update_account_details.csv")
     data_dict = {"new_email_id": new_email_id, "new_password": new_password}
     return data_dict
 
