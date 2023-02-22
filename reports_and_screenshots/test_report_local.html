@@ -253,7 +253,7 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
 }
 </script>
     <h1>Ecommerce Test Report</h1>
-    <p>Report generated on 21-Feb-2023 at 23:11:10 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v3.2.0</p>
+    <p>Report generated on 22-Feb-2023 at 22:19:13 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v3.2.0</p>
     <h2>Environment</h2>
     <table id="environment">
       <tr>
@@ -266,7 +266,7 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
         <td>Tester</td>
         <td>Santosh Sharma</td></tr></table>
     <h2>Summary</h2>
-    <p>12 tests ran in 487.25 seconds. </p>
+    <p>12 tests ran in 584.98 seconds. </p>
     <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="passed">11 passed</span>, <input checked="true" class="filter" data-test-result="skipped" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="skipped">0 skipped</span>, <input checked="true" class="filter" data-test-result="failed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="failed">0 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xfailed">1 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>
     <h2>Results</h2>
     <table id="results-table">
@@ -281,20 +281,20 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
       <tbody class="xfailed results-table-row">
         <tr>
           <td class="col-result">XFailed</td>
-          <td class="col-name">test_home_page.py::TestHomePage::test_validate_search_box[chrome]</td>
-          <td class="col-duration">18.25</td>
+          <td class="col-name">tests/test_home_page.py::TestHomePage::test_validate_search_box[chrome]</td>
+          <td class="col-duration">25.98</td>
           <td class="col-links"><a class="url" href="https://magento.softwaretestingboard.com/" target="_blank">URL</a> <a class="url" href="https://magento.softwaretestingboard.com/" target="_blank">URL</a> </td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div><div><img src="test_home_page.py_TestHomePage_test_validate_search_box[chrome]_21.02.2023_23.09.21.png" alt="screenshot" style="width:304px;height:228px;" onclick="window.open(this.src)" align="right"/></div></div>
-            <div class="log">self = &lt;tests.test_home_page.TestHomePage object at 0x00000275708A8A60&gt;<br/><br/>    @pytest.mark.xfail(reason=&quot;deliberate fail&quot;)<br/>    def test_validate_search_box(self):<br/>        self.log.info(&quot;========== test_validate_search_box START ==========&quot;)<br/>        home_pg = HomePage(self.driver)<br/>        status = home_pg.is_search_box_visible()<br/>        self.log.info(&quot;verifying search box visibility&quot;)<br/>    <br/>        # make test failed<br/>        if status:<br/>            self.log.info(&quot;Test Failed&quot;)<br/>&gt;           assert False<br/><span class="error">E           assert False</span><br/><br/>test_home_page.py:40: AssertionError<br/> -------------------------------Captured log call-------------------------------- <br/>INFO     TestHomePage:test_home_page.py:32 ========== test_validate_search_box START ==========
+            <div><div><img src="tests/test_home_page.py_TestHomePage_test_validate_search_box[chrome]_22.02.2023_22.16.55.png" alt="screenshot" style="width:304px;height:228px;" onclick="window.open(this.src)" align="right"/></div></div>
+            <div class="log">self = &lt;tests.test_home_page.TestHomePage object at 0x0000020CD9E23130&gt;<br/><br/>    @pytest.mark.xfail(reason=&quot;deliberate fail&quot;)<br/>    def test_validate_search_box(self):<br/>        self.log.info(&quot;========== test_validate_search_box START ==========&quot;)<br/>        home_pg = HomePage(self.driver)<br/>        status = home_pg.is_search_box_visible()<br/>        self.log.info(&quot;verifying search box visibility&quot;)<br/>    <br/>        # make test failed<br/>        if status:<br/>            self.log.info(&quot;Test Failed&quot;)<br/>&gt;           assert False<br/><span class="error">E           assert False</span><br/><br/>tests\test_home_page.py:40: AssertionError<br/> -------------------------------Captured log call-------------------------------- <br/>INFO     TestHomePage:test_home_page.py:32 ========== test_validate_search_box START ==========
 INFO     TestHomePage:test_home_page.py:35 verifying search box visibility
 INFO     TestHomePage:test_home_page.py:39 Test Failed<br/></div></td></tr></tbody>
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
-          <td class="col-name">test_create_customer_account_page.py::TestCustomerAccountPage::test_create_customer_account[chrome-generate_data_for_new_account]</td>
-          <td class="col-duration">34.15</td>
+          <td class="col-name">tests/test_create_customer_account_page.py::TestCustomerAccountPage::test_create_customer_account[chrome-generate_data_for_new_account]</td>
+          <td class="col-duration">42.16</td>
           <td class="col-links"><a class="url" href="https://magento.softwaretestingboard.com/" target="_blank">URL</a> <a class="url" href="https://magento.softwaretestingboard.com/" target="_blank">URL</a> </td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -308,8 +308,8 @@ INFO     TestCustomerAccountPage:test_create_customer_account_page.py:47 =======
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
-          <td class="col-name">test_account_information_page.py::TestAccountInformationPage::test_change_emailid[chrome-get_login_data-generate_data_for_update_account]</td>
-          <td class="col-duration">45.33</td>
+          <td class="col-name">tests/test_account_information_page.py::TestAccountInformationPage::test_change_emailid[chrome-get_login_data-generate_data_for_update_account]</td>
+          <td class="col-duration">50.12</td>
           <td class="col-links"><a class="url" href="https://magento.softwaretestingboard.com/" target="_blank">URL</a> <a class="url" href="https://magento.softwaretestingboard.com/" target="_blank">URL</a> </td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -326,8 +326,8 @@ INFO     TestAccountInformationPage:test_account_information_page.py:51 ========
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
-          <td class="col-name">test_account_information_page.py::TestAccountInformationPage::test_change_password[chrome-get_login_data-get_new_login_data]</td>
-          <td class="col-duration">57.29</td>
+          <td class="col-name">tests/test_account_information_page.py::TestAccountInformationPage::test_change_password[chrome-get_login_data-get_new_login_data]</td>
+          <td class="col-duration">64.50</td>
           <td class="col-links"><a class="url" href="https://magento.softwaretestingboard.com/" target="_blank">URL</a> <a class="url" href="https://magento.softwaretestingboard.com/" target="_blank">URL</a> </td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -344,8 +344,8 @@ INFO     TestAccountInformationPage:test_account_information_page.py:88 ========
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
-          <td class="col-name">test_address_book_page.py::TestAddressBookPage::test_add_address[chrome-get_new_login_data-get_address_data]</td>
-          <td class="col-duration">51.03</td>
+          <td class="col-name">tests/test_address_book_page.py::TestAddressBookPage::test_add_address[chrome-get_new_login_data-get_address_data]</td>
+          <td class="col-duration">60.84</td>
           <td class="col-links"><a class="url" href="https://magento.softwaretestingboard.com/" target="_blank">URL</a> <a class="url" href="https://magento.softwaretestingboard.com/" target="_blank">URL</a> </td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -360,8 +360,8 @@ INFO     TestAddressBookPage:test_address_book_page.py:50 ========== test_add_ad
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
-          <td class="col-name">test_cart_page.py::TestCartPage::test_verify_order_total[chrome-get_new_login_data-get_product_data]</td>
-          <td class="col-duration">71.05</td>
+          <td class="col-name">tests/test_cart_page.py::TestCartPage::test_verify_order_total[chrome-get_new_login_data-get_product_data]</td>
+          <td class="col-duration">78.39</td>
           <td class="col-links"><a class="url" href="https://magento.softwaretestingboard.com/" target="_blank">URL</a> <a class="url" href="https://magento.softwaretestingboard.com/" target="_blank">URL</a> </td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -380,8 +380,8 @@ INFO     TestCartPage:test_cart_page.py:58 ========== test_verify_order_total EN
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
-          <td class="col-name">test_customer_login_page.py::TestCustomerLoginPage::test_login[chrome-get_new_login_data]</td>
-          <td class="col-duration">22.06</td>
+          <td class="col-name">tests/test_customer_login_page.py::TestCustomerLoginPage::test_login[chrome-get_new_login_data]</td>
+          <td class="col-duration">27.07</td>
           <td class="col-links"><a class="url" href="https://magento.softwaretestingboard.com/" target="_blank">URL</a> <a class="url" href="https://magento.softwaretestingboard.com/" target="_blank">URL</a> </td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -396,8 +396,8 @@ INFO     TestCustomerLoginPage:test_customer_login_page.py:41 ========== test_lo
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
-          <td class="col-name">test_end_to_end.py::TestEndToEnd::test_end_to_end[chrome-get_new_login_data-get_product_data]</td>
-          <td class="col-duration">68.76</td>
+          <td class="col-name">tests/test_end_to_end.py::TestEndToEnd::test_end_to_end[chrome-get_new_login_data-get_product_data]</td>
+          <td class="col-duration">84.55</td>
           <td class="col-links"><a class="url" href="https://magento.softwaretestingboard.com/" target="_blank">URL</a> <a class="url" href="https://magento.softwaretestingboard.com/" target="_blank">URL</a> </td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -415,8 +415,8 @@ INFO     TestEndToEnd:test_end_to_end.py:55 ========== test_end_to_end END =====
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
-          <td class="col-name">test_home_page.py::TestHomePage::test_home_page_title[chrome]</td>
-          <td class="col-duration">12.53</td>
+          <td class="col-name">tests/test_home_page.py::TestHomePage::test_home_page_title[chrome]</td>
+          <td class="col-duration">15.72</td>
           <td class="col-links"><a class="url" href="https://magento.softwaretestingboard.com/" target="_blank">URL</a> <a class="url" href="https://magento.softwaretestingboard.com/" target="_blank">URL</a> </td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -427,8 +427,8 @@ INFO     TestHomePage:test_home_page.py:28 ========== test_home_page_title END =
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
-          <td class="col-name">test_product_details_page.py::TestProductDetailsPage::test_add_to_cart[chrome-get_new_login_data-get_product_data]</td>
-          <td class="col-duration">33.91</td>
+          <td class="col-name">tests/test_product_details_page.py::TestProductDetailsPage::test_add_to_cart[chrome-get_new_login_data-get_product_data]</td>
+          <td class="col-duration">42.82</td>
           <td class="col-links"><a class="url" href="https://magento.softwaretestingboard.com/" target="_blank">URL</a> <a class="url" href="https://magento.softwaretestingboard.com/" target="_blank">URL</a> </td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -445,8 +445,8 @@ INFO     TestProductDetailsPage:test_product_details_page.py:49 ***** test_add_t
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
-          <td class="col-name">test_product_details_page.py::TestProductDetailsPage::test_add_to_wishlist[chrome-get_new_login_data]</td>
-          <td class="col-duration">46.21</td>
+          <td class="col-name">tests/test_product_details_page.py::TestProductDetailsPage::test_add_to_wishlist[chrome-get_new_login_data]</td>
+          <td class="col-duration">56.17</td>
           <td class="col-links"><a class="url" href="https://magento.softwaretestingboard.com/" target="_blank">URL</a> <a class="url" href="https://magento.softwaretestingboard.com/" target="_blank">URL</a> </td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -461,8 +461,8 @@ INFO     TestProductDetailsPage:test_product_details_page.py:82 ========== test_
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
-          <td class="col-name">test_search_result_page.py::TestSearchResultPage::test_product_availability[chrome-get_new_login_data]</td>
-          <td class="col-duration">23.68</td>
+          <td class="col-name">tests/test_search_result_page.py::TestSearchResultPage::test_product_availability[chrome-get_new_login_data]</td>
+          <td class="col-duration">31.99</td>
           <td class="col-links"><a class="url" href="https://magento.softwaretestingboard.com/" target="_blank">URL</a> <a class="url" href="https://magento.softwaretestingboard.com/" target="_blank">URL</a> </td></tr>
         <tr>
           <td class="extra" colspan="4">

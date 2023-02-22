@@ -1,14 +1,10 @@
 # import libraries
 import os.path
-
-import openpyxl
 import pytest
 from selenium import webdriver
 from configurations.config import ConfigData
 from datetime import datetime
 import time
-import random
-import string
 import pandas as pd
 
 from dataprovider.test_data_provider import DataProviders
@@ -36,17 +32,16 @@ def generate_data_for_new_account():
     rand_str = Utils().random_data_generator(size=7)
     email_id = rand_str + "@gmail.com"
     password = "password@" + rand_str
-    #df = pd.read_csv("../testdata/file_new_account_details.csv")
+    # df = pd.read_csv("./testdata/file_new_account_details.csv")
     # for jenkins
-    # df = pd.read_csv("http://localhost:8080/job/ecommerce-project/ws/testdata/file_new_account_details.csv")
-    df = pd.read_csv("../ecommerce-project/testdata/file_new_account_details.csv")
+    df = pd.read_csv("./ecommerce-project/testdata/file_new_account_details.csv")
     df["first_name"] = "sony"
     df["last_name"] = "kumar"
     df["email_id"] = email_id
     df["password"] = password
-    # df.to_csv("../testdata/file_new_account_details.csv")
-    #df.to_csv("http://localhost:8080/job/ecommerce-project/ws/testdata/file_new_account_details.csv", index=False)
-    df.to_csv("../ecommerce-project/testdata/file_new_account_details.csv")
+    # df.to_csv("./testdata/file_new_account_details.csv")
+    # jenkins
+    df.to_csv("./ecommerce-project/testdata/file_new_account_details.csv")
     data_dict = {"email_id": email_id, "password": password}
     return data_dict
 
@@ -56,56 +51,51 @@ def generate_data_for_update_account():
     rand_str = Utils().random_data_generator(size=5)
     new_email_id = rand_str + "@gmail.com"
     new_password = "password@" + rand_str
-    # df = pd.read_csv("../testdata/file_update_account_details.csv")
+    # df = pd.read_csv("./testdata/file_update_account_details.csv")
     # for jenkins
-    #df = pd.read_csv("http://localhost:8080/job/ecommerce-project/ws/testdata/file_update_account_details.csv")
-    df = pd.read_csv("../ecommerce-project/testdata/file_update_account_details.csv")
+    df = pd.read_csv("./ecommerce-project/testdata/file_update_account_details.csv")
     df["new_email_id"] = new_email_id
     df["new_password"] = new_password
-    # df.to_csv("../testdata/file_update_account_details.csv")
-    #df.to_csv("http://localhost:8080/job/ecommerce-project/ws/testdata/file_update_account_details.csv", index=False)
-    df.to_csv("../ecommerce-project/testdata/file_update_account_details.csv")
+    # df.to_csv("./testdata/file_update_account_details.csv")
+    # jenkins
+    df.to_csv("./ecommerce-project/testdata/file_update_account_details.csv")
     data_dict = {"new_email_id": new_email_id, "new_password": new_password}
     return data_dict
 
 
 @pytest.fixture
 def get_login_data():
-    # login_data_dict = DataProviders().get_test_data("../testdata/file_new_account_details.csv")
+    #login_data_dict = DataProviders().get_test_data("./testdata/file_new_account_details.csv")
     # for jenkins
-    # login_data_dict = DataProviders().get_test_data("http://localhost:8080/job/ecommerce-project/ws/testdata/file_new_account_details.csv")
     login_data_dict = DataProviders().get_test_data(
-        "../ecommerce-project/testdata/file_new_account_details.csv")
+        "./ecommerce-project/testdata/file_new_account_details.csv")
     return login_data_dict
 
 
 @pytest.fixture
 def get_new_login_data():
-    # new_login_data_dict = DataProviders().get_test_data("../testdata/file_update_account_details.csv")
+    # new_login_data_dict = DataProviders().get_test_data("./testdata/file_update_account_details.csv")
     # for jenkins
-    # new_login_data_dict = DataProviders().get_test_data("http://localhost:8080/job/ecommerce-project/ws/testdata/file_update_account_details.csv")
     new_login_data_dict = DataProviders().get_test_data(
-        "../ecommerce-project/testdata/file_update_account_details.csv")
+        "./ecommerce-project/testdata/file_update_account_details.csv")
     return new_login_data_dict
 
 
 @pytest.fixture
 def get_address_data():
-    # address_data_dict = DataProviders().get_test_data("../testdata/file_address_details.csv")
+    # address_data_dict = DataProviders().get_test_data("./testdata/file_address_details.csv")
     # for jenkins
-    # address_data_dict = DataProviders().get_test_data("http://localhost:8080/job/ecommerce-project/ws/testdata/file_address_details.csv")
     address_data_dict = DataProviders().get_test_data(
-        "../ecommerce-project/testdata/file_address_details.csv")
+        "./ecommerce-project/testdata/file_address_details.csv")
     return address_data_dict
 
 
 @pytest.fixture
 def get_product_data():
-    # product_data_dict = DataProviders().get_test_data("../testdata/file_product_details.csv")
+    # product_data_dict = DataProviders().get_test_data("./testdata/file_product_details.csv")
     # for jenkins
-    # product_data_dict = DataProviders().get_test_data("http://localhost:8080/job/ecommerce-project/ws/testdata/file_product_details.csv")
     product_data_dict = DataProviders().get_test_data(
-        "../ecommerce-project/testdata/file_product_details.csv")
+        "./ecommerce-project/testdata/file_product_details.csv")
     return product_data_dict
 
 # reorder pytest test collection
@@ -130,11 +120,7 @@ def pytest_collection_modifyitems(items):
 def take_screenshot(file, root_dir):
     dt = datetime.now().strftime("%d.%m.%Y_%H.%M.%S")
     img_file = file + "_" + dt + ".png"
-    # enable for local dest
-    # dest_file = os.path.join(root_dir, img_file)
-    # for jenkins screenshot folder
-    # dest_file = os.path.join("http://localhost:8080/job/ecommerce-project/ws/reports_and_screenshots/", img_file)
-    dest_file = os.path.join("../ecommerce-project/reports_and_screenshots/", img_file)
+    dest_file = os.path.join(root_dir, img_file)
     web_driver.get_screenshot_as_file(dest_file)
     return img_file
 
